@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+
+  function Create(name,age){
+    this.name = name;
+    this.age = age;
+
+    this.sayName = fun;
+    /* this.sayName = function say(){
+      alert("我的名字是："+this.name)
+
+      在构造函数中定义的函数，每new一个对象，就会创建一个新的sayName函数
+      new一万个对象就会创建一万个sayName函数，会大量浪费内存
+    } */
+  }
+
+   /* 
+    将函数定义在全局作用域污染了全局作用域的命名空间
+    而且定义在全局作用域很不安全
+   */
+  function fun(){
+    alert("我的名字是："+this.name)
+  }
+
+  var cre = new Create("Lisa",25);
+  var cre1 = new Create("Jhon",22);
+  cre.sayName();
+  cre1.sayName();
+
+  console.log(cre.sayName == cre1.sayName);
+
+  // 原型对象
+  function Cat(name,age){
+    this.name = name;
+    this.age = age;
+  }
+
+  Cat.prototype.say = function(){
+    alert("喵喵~~~");
+  }
+
+  var cat = new Cat("cat",2);
+
+  cat.say();
+
+
+</script>
+</html>
